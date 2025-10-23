@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ítalo — Portfólio</title>
+  <meta name="description" content="Portfólio de Ítalo — Desenvolvedor Front-end em formação, criador de conteúdo sobre inclusão e estudante AZ-900. Apresenta projetos, habilidades e contato." />
+  <meta property="og:title" content="Ítalo — Portfólio" />
+  <meta property="og:description" content="Portfólio de Ítalo — Desenvolvedor Front-end em formação e criador de conteúdo sobre inclusão." />
+  <meta name="theme-color" content="#0f1724" />
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="./js/script.js" defer></script>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <div class="wrap" id="page">
+    <header>
+      <a class="brand" href="#main" aria-label="Ir para o início">
+        <div class="logo" aria-hidden="true">ÍT</div>
+        <div>
+          <div style="font-weight:700">Ítalo</div>
+          <div style="font-size:12px;color:var(--muted)">Front-end • Inclusão • Azure</div>
+        </div>
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <div class="nav-links" id="navLinks">
+          <a href="#sobre" class="ghost">Sobre</a>
+          <a href="#habilidades" class="ghost">Habilidades</a>
+          <a href="#projetos" class="ghost">Projetos</a>
+          <a href="#contato" class="ghost">Contato</a>
+        </div>
+
+        <button class="btn" id="cvBtn" onclick="downloadCV()">Baixar CV</button>
+        <button class="btn" id="themeToggle" aria-pressed="false" title="Alternar tema">Tema</button>
+
+        <button id="menuToggle" class="btn ghost" aria-expanded="false" aria-controls="navLinks" style="display:none">
+          ☰
+        </button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main id="main">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-card">
+          <div class="hero-inner">
+            <h1 id="heroTitle" class="title">Olá — eu sou o Ítalo</h1>
+            <p class="lead">Desenvolvedor front-end em formação, criador de conteúdo sobre inclusão e tecnologia assistiva. Estudando Front-end e Microsoft Azure (AZ-900). Gosto de projetos práticos, código limpo e narrativas que aproximam tecnologia e pessoas.</p>
+
+            <div class="meta">
+              <div style="display:flex;gap:8px;align-items:center">
+                <span class="tag" style="background:transparent;padding:0;font-weight:600;color:var(--accent)">Santa Luzia, MA</span>
+                <span style="color:var(--muted)">•</span>
+                <span style="color:var(--muted)">Disponível para projetos e parcerias</span>
+              </div>
+              <div style="margin-left:auto;display:flex;gap:8px">
+                <a class="ghost" href="#projetos">Ver projetos</a>
+                <a class="btn" href="#contato">Entrar em contato</a>
+              </div>
+            </div>
+
+            <div style="margin-top:6px;color:var(--muted);font-size:13px">Sou comunicador e produtor de roteiros para narração de vídeos — gosto de unir tecnologia e acessibilidade.</div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Informações rápidas">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div class="avatar" aria-hidden="true">ÍT</div>
+            <div>
+              <div style="font-weight:700">Ítalo</div>
+              <div style="font-size:13px;color:var(--muted)">25 anos • Santa Luzia, MA</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700;font-size:14px">O que estou estudando</div>
+            <div style="color:var(--muted);font-size:13px">Front-end, Microsoft Azure (AZ-900), SQL — lembrando C e fundamentos de eletromecânica.</div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <a class="ghost" href="#habilidades">Minhas skills</a>
+            <a class="ghost" href="#projetos">Projetos</a>
+          </div>
+        </aside>
+      </section>
+
+      <!-- SOBRE -->
+      <section id="sobre" aria-labelledby="sobreTitle">
+        <h2 id="sobreTitle">Sobre mim</h2>
+        <div class="grid">
+          <div class="hero-card">
+            <p style="margin:0;color:var(--muted)">Sou Ítalo, formado em Técnico em Eletromecânica, com transição para tecnologia e programação. Tenho paralisia cerebral de nascença (coreoatetose) que afeta minha fala e coordenação — isso me motivou a estudar tecnologias assistivas e criar conteúdo para encorajar outras pessoas com deficiência. Produzo roteiros para narração, desenvolvo projetos em front-end e estou me preparando para a certificação Azure Fundamentals (AZ-900).</p>
+            <p style="margin-top:8px;color:var(--muted)"><strong>Abordagem:</strong> foco em soluções práticas, acessibilidade e código bem organizado. Prefiro estudar com etapas claras e gosto de transformar conhecimento em projetos reais.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HABILIDADES -->
+      <section id="habilidades" aria-labelledby="skillsTitle">
+        <h2 id="skillsTitle">Habilidades</h2>
+        <div class="skills">
+          <div class="skill">
+            <div class="label"><span>HTML & CSS</span><span>Avançado</span></div>
+            <div class="bar" aria-hidden="true"><i style="width:92%"></i></div>
+            <div style="color:var(--muted);font-size:13px">Estrutura semântica, responsividade, layouts modernos.</div>
+          </div>
+
+          <div class="skill">
+            <div class="label"><span>JavaScript</span><span>Intermediário</span></div>
+            <div class="bar"><i style="width:78%"></i></div>
+            <div style="color:var(--muted);font-size:13px">DOM, fetch, validação, interações e SPA simples.</div>
+          </div>
+
+          <div class="skill">
+            <div class="label"><span>SQL</span><span>Intermediário</span></div>
+            <div class="bar"><i style="width:65%"></i></div>
+            <div style="color:var(--muted);font-size:13px">Consultas, joins, modelagem básica para aplicações web.</div>
+          </div>
+
+          <div class="skill">
+            <div class="label"><span>Microsoft Azure (AZ-900)</span><span>Em preparação</span></div>
+            <div class="bar"><i style="width:36%"></i></div>
+            <div style="color:var(--muted);font-size:13px">Conceitos de cloud, modelos de serviço, responsabilidade compartilhada.</div>
+          </div>
+
+          <div class="skill">
+            <div class="label"><span>C & Fundamentos Eletromecânica</span><span>Conhecimento</span></div>
+            <div class="bar"><i style="width:50%"></i></div>
+            <div style="color:var(--muted);font-size:13px">Base em C, lógica de baixo nível e eletricidade básica.</div>
+          </div>
+
+          <div class="skill">
+            <div class="label"><span>Comunicação & Conteúdo</span><span>Forte</span></div>
+            <div class="bar"><i style="width:90%"></i></div>
+            <div style="color:var(--muted);font-size:13px">Roteiros, narração de vídeos e criação de conteúdo com foco em inclusão.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJETOS -->
+      <section id="projetos" aria-labelledby="projTitle">
+        <h2 id="projTitle">Projetos</h2>
+        <div class="projects-grid">
+          <!-- Projeto 1 -->
+          <article class="project" aria-labelledby="p1">
+            <div class="thumb" role="img" aria-label="Miniatura do projeto Interface Acessível">Projeto: Interface Acessível</div>
+            <div>
+              <h3 id="p1" style="margin:0">Interface Acessível</h3>
+              <p style="margin:8px 0;color:var(--muted)">Um template responsivo com foco em contraste, navegação por teclado e componentes acessíveis — pensado para apresentadores com dificuldades de fala.</p>
+              <div class="meta">
+                <div class="tags">
+                  <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">A11y</span>
+                </div>
+                <div style="display:flex;gap:8px">
+                  <a class="ghost" href="#" target="_blank" rel="noopener">Ver código</a>
+                  <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 2 -->
+          <article class="project" aria-labelledby="p2">
+            <div class="thumb" role="img" aria-label="Miniatura do projeto Dashboard Simples">Dashboard Simples</div>
+            <div>
+              <h3 id="p2" style="margin:0">Dashboard Simples</h3>
+              <p style="margin:8px 0;color:var(--muted)">Painel para visualização de dados com filtros e gráficos leves — usei JS puro e consultas simuladas via JSON.</p>
+              <div class="meta">
+                <div class="tags">
+                  <span class="tag">JavaScript</span><span class="tag">UI</span><span class="tag">Charts</span>
+                </div>
+                <div style="display:flex;gap:8px">
+                  <a class="ghost" href="#" target="_blank" rel="noopener">Ver código</a>
+                  <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 3 -->
+          <article class="project" aria-labelledby="p3">
+            <div class="thumb" role="img" aria-label="Miniatura do projeto Canal de Conteúdo">Canal de Conteúdo</div>
+            <div>
+              <h3 id="p3" style="margin:0">Canal de Conteúdo — Inclusão</h3>
+              <p style="margin:8px 0;color:var(--muted)">Série de roteiros e vídeos que combinam motivação, dicas técnicas e acessibilidade para pessoas com deficiência.</p>
+              <div class="meta">
+                <div class="tags">
+                  <span class="tag">Roteiro</span><span class="tag">Vídeo</span><span class="tag">Inclusão</span>
+                </div>
+                <div style="display:flex;gap:8px">
+                  <a class="ghost" href="#" target="_blank" rel="noopener">Ver playlist</a>
+                  <a class="btn" href="#" target="_blank" rel="noopener">Contato</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- COMO TRABALHO -->
+      <section aria-labelledby="workflowTitle">
+        <h2 id="workflowTitle">Como eu trabalho</h2>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+          <div class="hero-card">
+            <div style="font-weight:700">Brief</div>
+            <div style="color:var(--muted);font-size:13px">Entendo seu objetivo e público — definimos escopo e requisitos.</div>
+          </div>
+          <div class="hero-card">
+            <div style="font-weight:700">Protótipo</div>
+            <div style="color:var(--muted);font-size:13px">Rascunho rápido do layout e interações (feedback iterativo).</div>
+          </div>
+          <div class="hero-card">
+            <div style="font-weight:700">Entrega</div>
+            <div style="color:var(--muted);font-size:13px">Código limpo, responsivo e documentação para deploy/uso.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTATO -->
+      <section id="contato" aria-labelledby="contatoTitle">
+        <h2 id="contatoTitle">Contato</h2>
+        <div style="display:grid;grid-template-columns:1fr;gap:12px">
+          <div class="contact-card">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:700">Vamos conversar?</div>
+                <div style="color:var(--muted);font-size:13px">Envie uma mensagem para discutir projetos, parcerias ou dúvidas sobre inclusão e tecnologia.</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-weight:700">E-mail</div>
+                <div style="color:var(--muted);font-size:13px"><a href="mailto:italo@example.com" style="color:var(--accent)">italo@example.com</a></div>
+              </div>
+            </div>
+
+            <form id="contactForm" aria-live="polite" onsubmit="return false;">
+              <div class="row">
+                <div class="col"><label for="name">Nome</label><input id="name" name="name" type="text" required placeholder="Seu nome" /></div>
+                <div class="col"><label for="email">E-mail</label><input id="email" name="email" type="email" required placeholder="seu@exemplo.com" /></div>
+              </div>
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" rows="5" placeholder="Conte o que precisa..." required></textarea>
+              <div style="display:flex;gap:8px;align-items:center">
+                <button class="btn" id="sendBtn" type="submit">Enviar mensagem</button>
+                <div id="formMsg" style="color:var(--muted);font-size:13px"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <strong>Ítalo</strong> — Desenvolvedor & Criador de Conteúdo • Santa Luzia, MA</div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <a href="#" class="ghost" onclick="downloadCV()">CV</a>
+          <a href="#" class="ghost" target="_blank" rel="noopener">GitHub</a>
+          <a href="#" class="ghost" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
