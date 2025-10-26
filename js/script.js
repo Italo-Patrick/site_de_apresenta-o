@@ -32,17 +32,17 @@
   // theme (persist via localStorage)
   const LS_THEME = 'pref-theme';
   function setTheme(theme){
-    if(theme === 'dark') html.setAttribute('data-theme', 'dark');
+    if(theme === 'light') html.setAttribute('data-theme', 'light');
     else html.removeAttribute('data-theme');
     themeBtn.setAttribute('aria-pressed', theme === 'dark');
     localStorage.setItem(LS_THEME, theme);
   }
-  const saved = localStorage.getItem(LS_THEME) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const saved = localStorage.getItem(LS_THEME) || 'dark';
   setTheme(saved);
 
   themeBtn.addEventListener('click', function(){
-    const current = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-    setTheme(current === 'dark' ? 'light' : 'dark');
+    const current = html.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    setTheme(current === 'light' ? 'dark' : 'light');
   });
 
   // smooth scrolling for internal links
