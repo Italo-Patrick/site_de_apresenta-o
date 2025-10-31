@@ -121,3 +121,8 @@
   });
 
 })();
+// Preenche barras de skill com base no atributo data-level
+document.querySelectorAll('.bar > i').forEach(el => {
+  const lvl = parseInt(el.getAttribute('data-level') || '0', 10);
+  el.style.width = Math.max(0, Math.min(lvl, 100)) + '%';
+});

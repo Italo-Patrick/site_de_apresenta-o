@@ -1,14 +1,13 @@
-/* -------------------------
-   CONFIGURAÇÃO E VARIÁVEIS
-   Mobile-first
-   -------------------------*/
+/* =========================================
+   VARIÁVEIS / THEME TOKENS
+   ========================================= */
 :root{
-  --bg: #000000;
+  --bg-gradient: linear-gradient(180deg, #050022 0%, #041b50 50%, #0500d1 100%);
   --card: #071827;
- --text: #e6eef6;
+  --text: #e6eef6;
   --muted: #9fb2c9;
- --accent: #22c1b3; /* azul petróleo */
-  --accent-2: #d7a43a; /* amarelo queimado */
+  --accent: #22c1b3;      /* azul petróleo */
+  --accent-2: #d7a43a;    /* amarelo queimado */
   --shadow: 0 8px 30px rgba(2,6,12,0.6);
   --radius: 12px;
   --glass: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
@@ -16,35 +15,50 @@
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 [data-theme="light"]{
-  --bg: #fbfdff;
+  --bg: #fffdf9;
   --card: #ffffff;
-  --text: #0f1724;
-  --muted: #55607a;
+  --text: #1f2733;
+  --muted: #6a7787;
   --accent: #0b6b6f;
-  --accent-2: #d99b2a;
-  --shadow: 0 6px 20px rgba(10,12,20,0.08);
+  --accent-2: #c58a23;    /* combina com o quente */
+  --shadow: 0 10px 28px rgba(80, 60, 30, 0.10);
+
+  --bg-gradient: linear-gradient(180deg,
+    #fffdf9 0%,
+    #f6f1e9 55%,
+    #ece6dc 100%
+  );
 }
 
+/* =========================================
+   RESET BÁSICO
+   ========================================= */
 *{box-sizing:border-box}
-html,body{height:100%}
+
+/* =========================================
+   BASE
+   ========================================= */
 body{
   margin:0;
-  background:linear-gradient(180deg,var(--bg), #0400ff 1200px);
+  background: var(--bg-gradient);
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.45;
-  padding-bottom:48px;
+  padding-bottom:0px;
 }
 
 /* container */
 .wrap{
   max-width:var(--container);
   margin:0 auto;
-  padding:20px;
+  padding:12px;
 }
 
-/* skip link for accessibility */
+/* =========================================
+   ACESSIBILIDADE
+   (oculta até receber foco)
+   ========================================= */
 .skip-link{
   position: absolute;
   left: -999px;
@@ -66,7 +80,9 @@ body{
   z-index:9999;
 }
 
-/* Header */
+/* =========================================
+   HEADER / NAV
+   ========================================= */
 header{
   display:flex;
   align-items:center;
@@ -88,11 +104,11 @@ header{
   color:white;border-radius:12px;font-weight:700;font-size:18px;
   box-shadow:var(--shadow);
 }
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
 }
 nav{display:flex;align-items:center;gap:8px}
 .nav-links{display:none}
@@ -105,7 +121,9 @@ nav{display:flex;align-items:center;gap:8px}
   background:transparent;color:var(--text);border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:8px;
 }
 
-/* Hero */
+/* =========================================
+   HERO
+   ========================================= */
 .hero{
   display:grid;
   grid-template-columns:1fr;
@@ -118,75 +136,95 @@ nav{display:flex;align-items:center;gap:8px}
   padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);
 }
 .hero-inner{display:flex;flex-direction:column;gap:12px}
-.title{
-  font-size:20px;font-weight:700;margin:0;
-}
+.title{font-size:20px;font-weight:700;margin:0}
 .lead{font-size:15px;color:var(--muted);margin:0}
 .hero-grid{
   display:grid;
-  grid-template-columns: 1fr;
+  grid-template-columns:1fr;
   gap:14px;
   align-items:center;
 }
 .avatar{
-  width:120px;height:120px;border-radius:16px;flex-shrink:0;background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
+  width:120px;height:120px;border-radius:16px;flex-shrink:0;
+  background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
   display:grid;place-items:center;font-weight:700;font-size:28px;color:var(--accent);
   box-shadow:var(--shadow);overflow:hidden;
 }
 .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 
-/* Sections */
-section{margin-top:22px}
+/* =========================================
+   SEÇÕES / TÍTULOS / GRIDS
+   ========================================= */
+section{margin-top:13px}
 h2{font-size:18px;margin:0 0 12px 0}
-.grid{
-  display:grid;gap:12px;
-}
-.cards{
-  display:grid;gap:12px;
-}
+.grid{display:grid;gap:12px}
+.cards{display:grid;gap:12px}
 
-/* Skills */
+/* =========================================
+   SKILLS
+   ========================================= */
 .skills{display:grid;gap:10px}
 .skill{
-  background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;
+  background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:8px;
 }
 .skill .label{display:flex;justify-content:space-between;font-weight:600}
 .bar{
   height:10px;background:rgba(0,0,0,0.06);border-radius:8px;overflow:hidden;
 }
-.bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-2),var(--accent));border-radius:8px;width:40%}
-
-/* Projects */
-.projects-grid{
-  display:grid;gap:12px;
+.bar > i{
+  display:block;height:100%;
+  background:linear-gradient(90deg,var(--accent-2),var(--accent));
+  border-radius:8px;width:40%;
 }
+
+/* =========================================
+   PROJETOS
+   ========================================= */
+.projects-grid{display:grid;gap:12px}
 .project{
-  display:flex;flex-direction:column;gap:12px;padding:12px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:12px;padding:12px;border-radius:12px;
+  background:var(--card);box-shadow:var(--shadow);
 }
 .project .thumb{
-  height:140px;border-radius:10px;background:linear-gradient(135deg,rgba(11,107,111,0.08),rgba(217,155,42,0.06));
+  height:140px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(11,107,111,0.08),rgba(217,155,42,0.06));
   display:grid;place-items:center;color:var(--muted);font-weight:700;
 }
 .project .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
 .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.04)}
 
-/* Contact */
+/* =========================================
+   CONTATO
+   ========================================= */
 .contact-card{
   padding:14px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);
 }
 form{display:flex;flex-direction:column;gap:10px}
 input[type="text"], input[type="email"], textarea{
-  padding:10px;border-radius:8px;border:1px solid rgba(10,12,20,0.06);background:transparent;color:var(--text);min-height:44px;
-  outline:none;
+  padding:10px;border-radius:8px;border:1px solid rgba(10,12,20,0.06);
+  background:transparent;color:var(--text);min-height:44px;outline:none;
 }
-input:focus, textarea:focus{box-shadow:0 6px 18px rgba(11,107,111,0.08);border-color:var(--accent)}
+input:focus, textarea:focus{
+  box-shadow:0 6px 18px rgba(11,107,111,0.08);
+  border-color:var(--accent);
+}
 .row{display:flex;gap:10px;flex-wrap:wrap}
 .col{flex:1;min-width:140px}
 
-footer{margin-top:34px;padding:18px 0;border-top:1px solid rgba(0,0,0,0.04);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+/* =========================================
+   FOOTER
+   ========================================= */
+footer{
+  margin-top:34px;padding:18px 0;
+  border-top:1px solid rgba(0,0,0,0.04);color:var(--muted);font-size:13px;
+  display:flex;justify-content:space-between;align-items:center
+}
 
-/* Responsive >= 768 */
+/* =========================================
+   RESPONSIVO
+   ========================================= */
 @media(min-width:720px){
   .nav-links{display:flex;gap:12px;align-items:center}
   .hero{grid-template-columns:1fr 360px}
@@ -200,16 +238,72 @@ footer{margin-top:34px;padding:18px 0;border-top:1px solid rgba(0,0,0,0.04);colo
   .projects-grid{grid-template-columns:repeat(3,1fr)}
 }
 
-/* small mobile adjustments */
+/* small mobile */
 @media(max-width:420px){
   .logo{width:44px;height:44px;font-size:16px}
   .avatar{width:100px;height:100px}
   .title{font-size:18px}
 }
 
-/* focus visible */
-a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgba(11,107,111,0.14);outline-offset:2px;border-radius:8px}
-
-/* subtle transitions */
-.btn, .project, .skill, .avatar{transition:transform .14s ease, box-shadow .14s ease}
+/* =========================================
+   FOCUS VISÍVEL / TRANSIÇÕES
+   ========================================= */
+a:focus, button:focus, input:focus, textarea:focus{
+  outline:3px solid rgba(11,107,111,0.14);outline-offset:2px;border-radius:8px
+}
+.btn, .project, .skill, .avatar{
+  transition:transform .14s ease, box-shadow .14s ease
+}
 .project:hover, .skill:hover{transform:translateY(-6px)}
+
+/* =========================================
+   (SEU AJUSTE) Remover faixas entre seções
+   ========================================= */
+section{
+  background:transparent !important;
+  margin-top:80px;
+  margin-bottom:80px;
+}
+footer{border-top:none !important}
+
+/* =========================================
+   UTILITÁRIOS
+   ========================================= */
+.m-0{margin:0}
+.mt-6{margin-top:6px}
+.mt-8{margin-top:8px}
+.mt-12{margin-top:12px}
+.small{font-size:13px}
+.fs-14{font-size:14px}
+.fw-700{font-weight:700}
+.muted{color:var(--muted)}
+
+.row-center{align-items:center}
+.gap-8{gap:8px}
+.gap-10{gap:10px}
+.gap-12{gap:12px}
+.wrap{flex-wrap:wrap}
+.ml-auto{margin-left:auto}
+.text-right{text-align:right}
+.dot{color:var(--muted)}
+
+.brand-text .brand-title{font-weight:700}
+.brand-text .brand-sub{font-size:12px;color:var(--muted)}
+#menuToggle{display:none}
+@media(max-width:719px){
+  #menuToggle{display:inline-flex}
+  #navLinks{display:none}
+}
+.meta-left{display:flex;gap:8px;align-items:center}
+.meta-right{margin-left:auto;display:flex;gap:8px}
+.tag-accent{background:transparent;padding:0;font-weight:600;color:var(--accent)}
+.hero-note{margin-top:6px}
+.workflow-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.contact-head{display:flex;justify-content:space-between;align-items:center}
+.link-accent{color:var(--accent)}
+.form-actions{display:flex;gap:8px;align-items:center}
+.project .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+
+/* largura das barras via JS (mantida) */
+.bar > i{ width:0 }
