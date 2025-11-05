@@ -5,20 +5,33 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ítalo — Portfólio</title>
   <meta name="description" content="Portfólio de Ítalo — Desenvolvedor Front-end em formação, criador de conteúdo sobre inclusão e estudante AZ-900. Apresenta projetos, habilidades e contato." />
+
+  <!-- Open Graph / Social -->
   <meta property="og:title" content="Ítalo — Portfólio" />
   <meta property="og:description" content="Portfólio de Ítalo — Desenvolvedor Front-end em formação e criador de conteúdo sobre inclusão." />
+  <meta property="og:image" content="https://seu-dominio.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Preferências de tema dos navegadores -->
+  <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#0f1724" />
+
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
   <div class="wrap" id="page">
     <header>
       <a class="brand" href="#main" aria-label="Ir para o início">
         <div class="logo" aria-hidden="true">
-          <img src="./assets/icons/logo_canto.png" alt="minha Logo">
+          <img src="./assets/icons/logo_canto.png"
+               alt="Logo de Ítalo"
+               loading="lazy">
+               <!-- Se souber as dimensões reais, adicione width/height para evitar layout shift -->
         </div>
         <div class="brand-text">
-          <div class="brand-title">Italo</div>
+          <div class="brand-title">Ítalo</div>
           <div class="brand-sub">Front-end • Inclusão • Azure</div>
         </div>
       </a>
@@ -31,10 +44,14 @@
           <a href="#contato" class="ghost">Contato</a>
         </div>
 
-        <button class="btn" id="cvBtn" onclick="downloadCV()">Baixar CV</button>
-        <button class="btn" id="themeToggle" aria-pressed="false" title="Alternar tema">Tema</button>
+        <button class="btn" id="cvBtn" type="button" onclick="downloadCV()">Baixar CV</button>
+        <button class="btn" id="themeToggle" type="button" aria-pressed="false" title="Alternar tema">Tema</button>
 
-        <button id="menuToggle" class="btn ghost" aria-expanded="false" aria-controls="navLinks">
+        <button id="menuToggle"
+                class="btn ghost"
+                type="button"
+                aria-expanded="false"
+                aria-controls="navLinks">
           ☰
         </button>
       </nav>
@@ -153,8 +170,8 @@
                   <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">A11y</span>
                 </div>
                 <div class="meta-right">
-                  <a class="ghost" href="#" target="_blank" rel="noopener">Ver código</a>
-                  <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+                  <a class="ghost" href="#" target="_blank" rel="noopener noreferrer">Ver código</a>
+                  <a class="btn" href="#" target="_blank" rel="noopener noreferrer">Demo</a>
                 </div>
               </div>
             </div>
@@ -171,8 +188,8 @@
                   <span class="tag">JavaScript</span><span class="tag">UI</span><span class="tag">Charts</span>
                 </div>
                 <div class="meta-right">
-                  <a class="ghost" href="#" target="_blank" rel="noopener">Ver código</a>
-                  <a class="btn" href="#" target="_blank" rel="noopener">Demo</a>
+                  <a class="ghost" href="#" target="_blank" rel="noopener noreferrer">Ver código</a>
+                  <a class="btn" href="#" target="_blank" rel="noopener noreferrer">Demo</a>
                 </div>
               </div>
             </div>
@@ -189,8 +206,8 @@
                   <span class="tag">Roteiro</span><span class="tag">Vídeo</span><span class="tag">Inclusão</span>
                 </div>
                 <div class="meta-right">
-                  <a class="ghost" href="#" target="_blank" rel="noopener">Ver playlist</a>
-                  <a class="btn" href="#" target="_blank" rel="noopener">Contato</a>
+                  <a class="ghost" href="#" target="_blank" rel="noopener noreferrer">Ver playlist</a>
+                  <a class="btn" href="#" target="_blank" rel="noopener noreferrer">Contato</a>
                 </div>
               </div>
             </div>
@@ -229,20 +246,43 @@
               </div>
               <div class="text-right">
                 <div class="fw-700">E-mail</div>
-                <div class="muted small"><a class="link-accent" href="mailto:italo@example.com">italo@example.com</a></div>
+                <div class="muted small"><a class="link-accent" href="mailto:contato.italopatrick@gmail.com">contato.italopatrick@gmail.com</a></div>
               </div>
             </div>
 
-            <form id="contactForm" aria-live="polite" onsubmit="return false;">
+            <!-- FORMULÁRIO (FormSubmit) -->
+            <form id="contactForm"
+                  action="https://formsubmit.co/contato.italopatrick@gmail.com"
+                  method="POST"
+                  autocomplete="on">
+              <!-- Honeypot anti-spam (não remover) -->
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+              <!-- Configs do FormSubmit -->
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_subject" value="Novo contato — Portfólio do Ítalo">
+              <!-- Se quiser redirecionar após enviar:
+              <input type="hidden" name="_next" value="https://seu-dominio.com/obrigado.html">
+              -->
+
               <div class="row gap-10 wrap">
-                <div class="col"><label for="name">Nome</label><input id="name" name="name" type="text" required placeholder="Seu nome" /></div>
-                <div class="col"><label for="email">E-mail</label><input id="email" name="email" type="email" required placeholder="seu@exemplo.com" /></div>
+                <div class="col">
+                  <label for="name">Nome</label>
+                  <input id="name" name="name" type="text" required placeholder="Seu nome" autocomplete="name" />
+                </div>
+                <div class="col">
+                  <label for="email">E-mail</label>
+                  <input id="email" name="email" type="email" required placeholder="seu@exemplo.com" autocomplete="email" />
+                </div>
               </div>
+
               <label for="message">Mensagem</label>
               <textarea id="message" name="message" rows="5" placeholder="Conte o que precisa..." required></textarea>
+
               <div class="form-actions">
                 <button class="btn" id="sendBtn" type="submit">Enviar mensagem</button>
-                <div id="formMsg" class="muted small"></div>
+                <!-- status acessível (aria-live aqui, não no <form>) -->
+                <div id="formMsg" class="muted small" role="status" aria-live="polite"></div>
               </div>
             </form>
           </div>
@@ -253,8 +293,8 @@
         <div>© <strong>Ítalo</strong> — Desenvolvedor & Criador de Conteúdo • Santa Luzia, MA</div>
         <div class="row gap-12">
           <a href="#" class="ghost" onclick="downloadCV()">CV</a>
-          <a href="https://github.com/Italo-Patrick" class="ghost" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/italo-patrick-vieira-lima-05b84434b/" class="ghost" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" class="ghost" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="#" class="ghost" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </footer>
     </main>

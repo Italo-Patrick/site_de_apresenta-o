@@ -62,44 +62,34 @@
     }
   });
 
-  // simple contact form validation + fake "send"
+  // =============================
+  // FORMULÁRIO DE CONTATO (FormSubmit)
+  // =============================
   const form = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
   const sendBtn = document.getElementById('sendBtn');
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    formMsg.textContent = '';
-    sendBtn.disabled = true;
-    sendBtn.textContent = 'Enviando...';
+  if (form) {
+    form.addEventListener('submit', function() {
+      // Mostra uma mensagem visual antes do envio
+      if (formMsg) formMsg.textContent = 'Enviando...';
+      sendBtn.disabled = true;
 
-    // validações básicas
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-    if(!name || !email || !message){
-      formMsg.textContent = 'Preencha todos os campos.';
-      sendBtn.disabled = false;
-      sendBtn.textContent = 'Enviar mensagem';
-      return;
-    }
-    // simular envio (substitua aqui por fetch para backend)
-    setTimeout(()=>{
-      formMsg.textContent = 'Mensagem enviada! Responderei por e-mail em breve.';
-      form.reset();
-      sendBtn.disabled = false;
-      sendBtn.textContent = 'Enviar mensagem';
-    }, 900);
-  });
+      // Após 3 segundos, reativa o botão (apenas efeito visual)
+      setTimeout(() => {
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Enviar mensagem';
+      }, 3000);
+      // Importante: sem preventDefault, o FormSubmit envia o POST normalmente!
+    });
+  }
 
   // função para "baixar" CV (placeholder)
   window.downloadCV = function(){
-    // se tiver um arquivo CV em /cv.pdf, abre; senão mostra alerta
     const cvPath = './cv.pdf';
     fetch(cvPath, {method:'HEAD'}).then(res=>{
       if(res.ok) window.open(cvPath, '_blank');
       else {
-        // se não houver arquivo, gera um “pseudo-PDF” como fallback
         const text = "CV de Ítalo\n\nSubstitua este arquivo 'cv.pdf' pela versão real.";
         const blob = new Blob([text], {type:'text/plain'});
         const url = URL.createObjectURL(blob);
@@ -113,16 +103,45 @@
     });
   };
 
-  // atalho: tecla "t" alterna o tema
-  document.addEventListener('keydown', function(e){
+  // tecla "t" (tema) desativada
+  /*document.addEventListener('keydown', function(e){
     if(e.key === 't' && !e.ctrlKey && !e.metaKey){
       themeBtn.click();
     }
-  });
-
+  });*/
 })();
+
 // Preenche barras de skill com base no atributo data-level
 document.querySelectorAll('.bar > i').forEach(el => {
   const lvl = parseInt(el.getAttribute('data-level') || '0', 10);
   el.style.width = Math.max(0, Math.min(lvl, 100)) + '%';
 });
+
+/* =====================================================
+   Link ativo no menu (destaca a seção visível)
+   - Usa aria-current="page" para acessibilidade
+   - Inicia destacado já no carregamento
+   - scroll-margin-top no CSS complementa a âncora
+   ===================================================== */
+const sections = document.querySelectorAll("main section[id]");
+const navAnchors = document.querySelectorAll("nav a[href^='#']");
+
+function highlightCurrent(){
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120; // ajuste fino (bata com o CSS)
+    if (scrollY >= sectionTop) {
+      current = section.id;
+    }
+  });
+
+  navAnchors.forEach(link => {
+    link.removeAttribute("aria-current");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+}
+
+window.addEventListener("scroll", highlightCurrent, { passive: true });
+highlightCurrent(); // marca já ao carregar
