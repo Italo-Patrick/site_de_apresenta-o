@@ -103,6 +103,27 @@ header{
   text-decoration:none;
   color:var(--text);
 }
+/* Links do menu (navegação principal) */
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  font-weight: 500;
+}
+/* Destaque ao passar o mouse ou navegar por teclado */
+nav a:hover,
+nav a:focus-visible {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Quando o link estiver ativo (página atual) */
+nav a[aria-current="page"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
 .logo{
   width:48px;height:48px;
   display:grid;place-items:center;
@@ -127,7 +148,7 @@ nav{display:flex;align-items:center;gap:8px}
   background:transparent;color:var(--text);border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:8px;
 }
 
-/* ✅ Correção: usar --accent (sua variável existente) */
+/* link ativo */
 nav a[aria-current="page"]{
   color: var(--accent);
   font-weight: 600;
@@ -172,11 +193,9 @@ section{
   background:transparent !important;
   margin: var(--section-gap) 0;
 }
-/* ✅ Nova regra: suaviza âncoras com header e scroll suave */
 main section[id]{
-  scroll-margin-top: 120px; /* mesmo valor do ajuste fino no JS */
+  scroll-margin-top: 120px;
 }
-
 h2{font-size:18px;margin:0 0 12px 0}
 .grid{display:grid;gap:12px}
 .cards{display:grid;gap:12px}
@@ -200,21 +219,176 @@ h2{font-size:18px;margin:0 0 12px 0}
 }
 
 /* =========================================
-   PROJETOS
+   PROJETOS (CADA CARD INDEPENDENTE)
    ========================================= */
-.projects-grid{display:grid;gap:12px}
-.project{
-  display:flex;flex-direction:column;gap:12px;padding:12px;border-radius:12px;
-  background:var(--card);box-shadow:var(--shadow);
+
+.projects-grid {
+  display: grid;
+  gap: 12px;
+  align-items: stretch;
 }
-.project .thumb{
-  height:140px;border-radius:10px;
-  background:linear-gradient(135deg,rgba(11,107,111,0.08),rgba(217,155,42,0.06));
-  display:grid;place-items:center;color:var(--muted);font-weight:700;
+
+/* ========== CARD 1 ========== */
+.projects-grid .project:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: var(--shadow);
 }
-.project .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.tags{display:flex;gap:6px;flex-wrap:wrap}
-.tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,0.04)}
+
+.projects-grid .project:nth-child(1) .thumb {
+  height: 140px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(11,107,111,0.08), rgba(217,155,42,0.06));
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
+}
+
+.projects-grid .project:nth-child(1) > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.projects-grid .project:nth-child(1) .meta {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.projects-grid .project:nth-child(1) .tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.projects-grid .project:nth-child(1) .tag {
+  font-size: 12px;
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.04);
+}
+
+/* ========== CARD 2 ========== */
+.projects-grid .project:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.projects-grid .project:nth-child(2) .thumb {
+  height: 140px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(11,107,111,0.08), rgba(217,155,42,0.06));
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
+}
+
+.projects-grid .project:nth-child(2) > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.projects-grid .project:nth-child(2) .meta {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.projects-grid .project:nth-child(2) .tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.projects-grid .project:nth-child(2) .tag {
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.04);
+}
+
+/* ========== CARD 3 ========== */
+.projects-grid .project:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.projects-grid .project:nth-child(3) .thumb {
+  height: 140px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(11,107,111,0.08), rgba(217,155,42,0.06));
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
+}
+
+.projects-grid .project:nth-child(3) > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.projects-grid .project:nth-child(3) .meta {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.projects-grid .project:nth-child(3) .tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.projects-grid .project:nth-child(3) .tag {
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.04);
+}
 
 /* =========================================
    CONTATO
@@ -232,6 +406,19 @@ input:focus-visible, textarea:focus-visible{
   border-color:var(--accent);
 }
 .row{display:flex;gap:10px}
+
+/* Corrige alinhamento de labels e campos dentro do formulário */
+#contactForm .col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Mantido como está (se quiser ajustar depois, a gente mexe só aqui) */
+#contactForm .row .col:nth-child(2) {
+  margin-right: 50%;
+}
+
 .col{flex:1;min-width:140px}
 
 /* =========================================
@@ -320,7 +507,4 @@ footer{
 .contact-head{display:flex;justify-content:space-between;align-items:center}
 .link-accent{color:var(--accent)}
 .form-actions{display:flex;gap:8px;align-items:center}
-.project .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
-
-/* largura das barras via JS (mantida) */
 .bar > i{ width:0 }
