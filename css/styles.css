@@ -508,3 +508,11 @@ footer{
 .link-accent{color:var(--accent)}
 .form-actions{display:flex;gap:8px;align-items:center}
 .bar > i{ width:0 }
+
+@media (max-width: 480px) {
+  .contact-card {
+    margin-left: -12px;   /* anula o padding da .wrap */
+    margin-right: -12px;  /* anula o padding da .wrap */
+    border-radius: 0;     /* opcional: deixa reto pra colar na borda */
+  }
+}
