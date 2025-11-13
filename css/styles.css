@@ -430,6 +430,26 @@ footer{
   display:flex;justify-content:space-between;align-items:center;
 }
 
+/* Links do footer: texto e ícone alinhados e do mesmo tamanho */
+footer a{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;            /* espaço entre ícone e texto */
+  line-height:1;      /* evita “pular” vertical */
+}
+
+/* Ícones Lucide / SVG do footer do tamanho da fonte do link */
+footer a svg,
+footer a .lucide{     /* cobre <svg> e elementos com classe .lucide */
+  width:1em;
+  height:1em;
+  flex:0 0 auto;
+  stroke:currentColor;  /* cor = cor do texto do link */
+  fill:none;
+  stroke-width:1.8;
+  vertical-align:middle;
+}
+
 /* =========================================
    RESPONSIVO
    ========================================= */
