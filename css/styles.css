@@ -43,7 +43,7 @@
 img{ max-width:100%; height:auto; display:block }
 
 /* =========================================
-   BASE
+   BASES
    ========================================= */
 body{
   margin:0;
@@ -53,6 +53,11 @@ body{
   -moz-osx-font-smoothing:grayscale;
   line-height:1.45;
   padding-bottom:0px;
+}
+/*  body da pagina de confirmação de contato*/
+.confirm-form{
+  min-height: 100vh;
+  background: var(--bg-gradient);
 }
 
 /* container */
@@ -535,4 +540,41 @@ footer a .lucide{     /* cobre <svg> e elementos com classe .lucide */
     margin-right: -12px;  /* anula o padding da .wrap */
     border-radius: 0;     /* opcional: deixa reto pra colar na borda */
   }
+}
+
+/* =========================================
+   PÁGINA DE CONFIRMAÇÃO DE CONTATO
+========================================= */
+
+body.confirm-form .wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* main ocupa o espaço entre header e footer
+   e centraliza o conteúdo no meio desse espaço */
+body.confirm-form main {
+  flex: 1;
+  display: flex;
+  justify-content: center;   /* centro horizontal */
+  align-items: center;       /* centro vertical   */
+}
+
+/* zera o espaçamento padrão das sections nessa página */
+body.confirm-form section {
+  margin: 0;
+  padding: 0;
+}
+
+body.confirm-form .hero {
+  margin: 0;
+  padding: 0;
+}
+
+/* card de confirmação */
+body.confirm-form .contact-card {
+  max-width: 640px;
+  text-align: center;
+  padding: 32px;
 }

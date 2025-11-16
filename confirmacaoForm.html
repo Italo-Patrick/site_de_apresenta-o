@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato confirmado</title>
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Ítalo — Portfólio" />
+    <meta property="og:description" content="Portfólio de Ítalo — Desenvolvedor Front-end em formação e criador de conteúdo sobre inclusão." />
+    <meta property="og:image" content="https://seu-dominio.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Preferências de tema dos navegadores -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0f1724" />
+
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body class="confirm-form">
+  <div class="wrap" id="page">
+    <header>
+      <a class="brand" href="index.html" aria-label="Ir para o início">
+        <div class="logo" aria-hidden="true">
+          <img src="./assets/icons/logo_canto.png"
+               alt="Logo de Ítalo"
+               loading="lazy">
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Italo</div>
+          <div class="brand-sub">Front-end • Inclusão • Azure</div>
+        </div>
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <div class="nav-links" id="navLinks">
+          <a href="index.html#sobre" class="ghost">Sobre</a>
+          <a href="index.html#habilidades" class="ghost">Habilidades</a>
+          <a href="index.html#projetos" class="ghost">Projetos</a>
+          <a href="index.html#contato" class="ghost">Contato</a>
+        </div>
+
+        <button class="btn" id="cvBtn" type="button" onclick="downloadCV()">Baixar CV</button>
+        <button class="btn" id="themeToggle" type="button" aria-pressed="false" title="Alternar tema">Tema</button>
+
+        <button id="menuToggle"
+                class="btn ghost"
+                type="button"
+                aria-expanded="false"
+                aria-controls="navLinks">
+          ☰
+        </button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main id="main" class="main">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="contact-card">
+          <div class="main_message">
+            <h1 id="heroTitle">OBRIGADO POR ENTRAR EM CONTATO!</h1>
+            <p class="lead">Sua mensagem foi recebida com sucesso.
+Vou te responder o mais rápido possível — fico muito feliz por poder conversar sobre tecnologia, inclusão e novos projetos.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <strong>Italo</strong> — Desenvolvedor & Criador de Conteúdo • Santa Luzia, MA</div>
+      <div class="row gap-12">
+        <a href="#" class="ghost" onclick="downloadCV()">CV</a>
+        <a href="https://github.com/Italo-Patrick" class="ghost" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="github"></i>GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/italo-patrick-vieira-lima/" class="ghost" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="linkedin"></i>LinkedIn
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- mantenha só este script -->
+  <script src="./js/script.js" defer></script>
+
+  <!-- script dos ícones do footer -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
