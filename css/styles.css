@@ -12,6 +12,7 @@
   --radius: 12px;
   --glass: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
   --container: 1100px;
+  --container-cv:1920px;
   --section-gap: 80px;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
@@ -94,13 +95,14 @@ body{
 /* =========================================
    HEADER / NAV
    ========================================= */
-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:12px 0;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 24px; /* espaçamento lateral */
 }
+
 .brand{
   display:flex;
   align-items:center;
@@ -184,12 +186,70 @@ nav a[aria-current="page"]{
   align-items:center;
 }
 .avatar{
-  width:120px;height:120px;border-radius:16px;flex-shrink:0;
-  background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
-  display:grid;place-items:center;font-weight:700;font-size:28px;color:var(--accent);
-  box-shadow:var(--shadow);overflow:hidden;
+  width:120px;
+  height:120px;
+  border-radius:16px;
+  overflow:hidden;
+  flex-shrink:0;
+  position:relative;
+  background: transparent !important; /* mata qualquer fundo herdado */
+  padding: 0 !important;             /* mata padding escondido */
+  clip-path: inset(0 round 16px);    /* 🔥 força arredondamento SEM chance de falhar */
 }
+
+.avatar > img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover;
+  display:block;
+  border-radius:16px; /* duplico aqui pra garantir */
+}
+
 .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* Modal base */
+.modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  place-items: center;
+  z-index: 9999;
+  padding: 24px;
+}
+
+/* quando abre */
+.modal.ativo{
+  display: grid;
+}
+
+.modal-conteudo{
+  max-width: 520px;
+  width: 100%;
+  background: transparent;
+}
+
+.modal-conteudo img{
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+}
+
+/* botão fechar */
+.modal-fechar{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+}
 
 /* =========================================
    SEÇÕES / TÍTULOS / GRIDS
@@ -578,3 +638,196 @@ body.confirm-form .contact-card {
   text-align: center;
   padding: 32px;
 }
+
+/* ============================
+   CURRÍCULO – LAYOUT BÁSICO
+   ============================ */
+
+.topo-cv {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.cv-bloco ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0; 
+}
+.topo-cv .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+header > *:last-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 4px; /* tira o botão da borda */
+}
+
+.topo-cv h1 {
+  font-size: 1.8rem;
+  margin: 0 0 4px;
+}
+
+.topo-cv p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.topo-cv__acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Ajuste esses nomes se você já tiver botões padronizados */
+.botao-primario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.botao-primario:hover,
+.botao-primario:focus-visible {
+  filter: brightness(1.05);
+}
+
+.botao-ghost {
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.cv-main {
+  padding: 32px 0 40px;
+  max-width: var(--container-cv);
+}
+
+.cv-bloco {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 18px;
+  /*text-align: center;*/
+}
+
+.cv-bloco-contact{
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 18px;
+  text-align: center;
+}
+
+.cv-bloco h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.cv-bloco h3 {
+  margin-top: 8px;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+.cv-bloco p,
+.cv-bloco li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cv-grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 700px) {
+  .cv-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cv-item {
+  margin-bottom: 12px;
+}
+
+.cv-item__sub {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.cv-footer {
+  padding: 18px 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ============================
+   SWING (Alternância de layout)
+   ============================ */
+
+.swing {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 40px auto;
+}
+
+/* Container interno padrão */
+.swing-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Texto e mídia dividem espaço */
+.swing-text {
+  flex: 1;
+}
+
+.swing-media {
+  flex: 1;
+}
+
+/* Alternância automática */
+.swing:nth-of-type(odd) .swing-inner {
+  flex-direction: row;
+}
+
+.swing:nth-of-type(even) .swing-inner {
+  flex-direction: row-reverse;
+}
+
+/* Responsivo */
+@media (max-width: 720px) {
+  .swing-inner {
+    flex-direction: column !important;
+    text-align: center;
+  }
+}
+

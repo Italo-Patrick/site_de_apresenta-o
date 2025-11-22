@@ -82,7 +82,9 @@
 
         <aside class="hero-card" aria-label="Informações rápidas">
           <div class="row row-center gap-12">
-            <div class="avatar" aria-hidden="true">ÍT</div>
+            <div class="avatar" aria-hidden="true">
+              <img src="imgs/minha-foto.png" alt="Foto do Italo de camia social azuk escuro">
+            </div>
             <div>
               <div class="fw-700">Italo</div>
               <div class="muted small">26 anos • Santa Luzia, MA</div>
@@ -313,6 +315,15 @@
 <script>
   lucide.createIcons();
 </script>
+
+<!-- Modal da foto -->
+<div id="fotoModal" class="modal" aria-hidden="true" role="dialog" aria-label="Foto ampliada">
+  <button class="modal-fechar" aria-label="Fechar foto">×</button>
+
+  <div class="modal-conteudo">
+    <img id="fotoModalImg" src="" alt="">
+  </div>
+</div>
 
 </body>
 </html>

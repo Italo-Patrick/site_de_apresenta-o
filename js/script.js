@@ -8,128 +8,190 @@
   const navLinks = document.getElementById('navLinks');
   const cvBtn = document.getElementById('cvBtn');
 
-  // mostrar botão de menu em telas pequenas
+  /* ==========================
+     MENU MOBILE (com proteção)
+     ========================== */
   function updateMenuVisibility(){
+    const navLinksEl = document.getElementById('navLinks');
+    if (!menuToggle || !navLinksEl) return; // página sem menu → ignora
+
     if(window.innerWidth < 720){
       menuToggle.style.display = 'inline-flex';
-      document.getElementById('navLinks').style.display = 'none';
+      navLinksEl.style.display = 'none';
     } else {
       menuToggle.style.display = 'none';
-      document.getElementById('navLinks').style.display = 'flex';
+      navLinksEl.style.display = 'flex';
     }
   }
+
   updateMenuVisibility();
   window.addEventListener('resize', updateMenuVisibility);
 
-  // menu mobile toggle
-  menuToggle.addEventListener('click', function(){
-    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', !expanded);
-    if(navLinks.style.display === 'flex') navLinks.style.display = 'none';
-    else navLinks.style.display = 'flex';
-  });
+  // Toggle do menu mobile
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function(){
+      const navLinksEl = document.getElementById('navLinks');
+      if (!navLinksEl) return;
 
-  // theme (persist via localStorage)
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !expanded);
+
+      navLinksEl.style.display =
+        navLinksEl.style.display === 'flex' ? 'none' : 'flex';
+    });
+  }
+
+  /* ==========================
+     TEMA (light/dark + persistência)
+     ========================== */
   const LS_THEME = 'pref-theme';
+
   function setTheme(theme){
-    if(theme === 'light') html.setAttribute('data-theme', 'light');
-    else html.removeAttribute('data-theme');
-    themeBtn.setAttribute('aria-pressed', theme === 'dark');
+    if(theme === 'light'){
+      html.setAttribute('data-theme', 'light');
+    } else {
+      html.removeAttribute('data-theme');
+    }
+    themeBtn?.setAttribute('aria-pressed', theme === 'dark');
     localStorage.setItem(LS_THEME, theme);
   }
+
   const saved = localStorage.getItem(LS_THEME) || 'dark';
   setTheme(saved);
 
-  themeBtn.addEventListener('click', function(){
-    const current = html.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-    setTheme(current === 'light' ? 'dark' : 'light');
-  });
+  // Botão de tema
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      const isLight = html.getAttribute('data-theme') === 'light';
+      setTheme(isLight ? 'dark' : 'light');
+    });
+  }
 
-  // smooth scrolling for internal links
+    /* ==========================
+               pop-up
+     ========================== */
+     const avatarImg = document.querySelector(".avatar img");
+const modal = document.getElementById("fotoModal");
+const modalImg = document.getElementById("fotoModalImg");
+const fecharBtn = modal.querySelector(".modal-fechar");
+
+function abrirModal() {
+  modal.classList.add("ativo");
+  modal.setAttribute("aria-hidden", "false");
+  modalImg.src = avatarImg.src;
+  modalImg.alt = avatarImg.alt;
+  document.body.style.overflow = "hidden";
+}
+
+function fecharModal() {
+  modal.classList.remove("ativo");
+  modal.setAttribute("aria-hidden", "true");
+  modalImg.src = "";
+  document.body.style.overflow = "";
+}
+
+avatarImg.style.cursor = "zoom-in";
+avatarImg.addEventListener("click", abrirModal);
+
+// fecha no X
+fecharBtn.addEventListener("click", fecharModal);
+
+// fecha clicando fora da imagem
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) fecharModal();
+});
+
+// fecha no ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal.classList.contains("ativo")) {
+    fecharModal();
+  }
+});
+
+  /* ==========================
+     SMOOTH SCROLL PARA ÂNCORAS
+     ========================== */
   document.addEventListener('click', function(e){
     const a = e.target.closest('a');
     if(!a) return;
     const href = a.getAttribute('href') || '';
-    if(href.startsWith('#')) {
+
+    if(href.startsWith('#')){
       e.preventDefault();
       const id = href.slice(1);
       const el = document.getElementById(id);
-      if(el) {
+      if(el){
         el.scrollIntoView({behavior:'smooth', block:'start'});
-        // close mobile menu if open
-        if(window.innerWidth < 720) navLinks.style.display = 'none';
+
+        if(window.innerWidth < 720){
+          const navLinksEl = document.getElementById('navLinks');
+          if(navLinksEl) navLinksEl.style.display = 'none';
+        }
       }
     }
   });
 
-  // =============================
-  // FORMULÁRIO DE CONTATO (FormSubmit)
-  // =============================
+  /* ==========================
+     FORMULÁRIO (FormSubmit)
+     ========================== */
   const form = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
   const sendBtn = document.getElementById('sendBtn');
 
   if (form) {
     form.addEventListener('submit', function() {
-      // Mostra uma mensagem visual antes do envio
       if (formMsg) formMsg.textContent = 'Enviando...';
-      sendBtn.disabled = true;
+      if (sendBtn) sendBtn.disabled = true;
 
-      // Após 3 segundos, reativa o botão (apenas efeito visual)
       setTimeout(() => {
-        sendBtn.disabled = false;
-        sendBtn.textContent = 'Enviar mensagem';
+        if (sendBtn) {
+          sendBtn.disabled = false;
+          sendBtn.textContent = 'Enviar mensagem';
+        }
       }, 3000);
-      // Importante: sem preventDefault, o FormSubmit envia o POST normalmente!
     });
   }
 
-  // função para "baixar" CV (placeholder)
+  /* ==========================
+     DOWNLOAD DO CV
+     ========================== */
   window.downloadCV = function(){
     const cvPath = './cv.pdf';
-    fetch(cvPath, {method:'HEAD'}).then(res=>{
-      if(res.ok) window.open(cvPath, '_blank');
-      else {
+
+    fetch(cvPath, {method:'HEAD'})
+      .then(res => {
+        if(res.ok) window.open(cvPath, '_blank');
+        else throw new Error();
+      })
+      .catch(()=>{
         const text = "CV de Ítalo\n\nSubstitua este arquivo 'cv.pdf' pela versão real.";
         const blob = new Blob([text], {type:'text/plain'});
         const url = URL.createObjectURL(blob);
         window.open(url, '_blank');
-      }
-    }).catch(()=>{
-      const text = "CV de Ítalo\n\nSubstitua este arquivo 'cv.pdf' pela versão real.";
-      const blob = new Blob([text], {type:'text/plain'});
-      const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
-    });
+      });
   };
 
-  // tecla "t" (tema) desativada
-  /*document.addEventListener('keydown', function(e){
-    if(e.key === 't' && !e.ctrlKey && !e.metaKey){
-      themeBtn.click();
-    }
-  });*/
-})();
+})(); // <-- Fecha o IIFE corretamente
 
-// Preenche barras de skill com base no atributo data-level
+/*****************************************
+ * Barras de skill
+ *****************************************/
 document.querySelectorAll('.bar > i').forEach(el => {
   const lvl = parseInt(el.getAttribute('data-level') || '0', 10);
   el.style.width = Math.max(0, Math.min(lvl, 100)) + '%';
 });
 
-/* =====================================================
-   Link ativo no menu (destaca a seção visível)
-   - Usa aria-current="page" para acessibilidade
-   - Inicia destacado já no carregamento
-   - scroll-margin-top no CSS complementa a âncora
-   ===================================================== */
+/*****************************************
+ * HIGHLIGHT DA SEÇÃO ATIVA
+ *****************************************/
 const sections = document.querySelectorAll("main section[id]");
 const navAnchors = document.querySelectorAll("nav a[href^='#']");
 
 function highlightCurrent(){
   let current = "";
+
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120; // ajuste fino (bata com o CSS)
+    const sectionTop = section.offsetTop - 120;
     if (scrollY >= sectionTop) {
       current = section.id;
     }

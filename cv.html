@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Curriculo — Italo</title>
+  <meta name="description" content="Portfólio de Ítalo — Desenvolvedor Front-end em formação, criador de conteúdo sobre inclusão e estudante AZ-900. Apresenta projetos, habilidades e contato." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Ítalo — Portfólio" />
+  <meta property="og:description" content="Portfólio de Ítalo — Desenvolvedor Front-end em formação e criador de conteúdo sobre inclusão." />
+  <meta property="og:image" content="https://seu-dominio.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Preferências de tema dos navegadores -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#0f1724" />
+
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<header>
+  <a class="brand" href="index.html" aria-label="Ir para o início">
+    <div class="logo" aria-hidden="true">
+      <img src="./assets/icons/logo_canto.png"
+           alt="Logo de Ítalo"
+           loading="lazy">
+    </div>
+    <div class="brand-text">
+      <div class="brand-title">Italo</div>
+      <div class="brand-sub">Front-end • Inclusão • Azure</div>
+    </div>
+  </a>
+
+  <nav aria-label="Navegação principal">
+    <!-- nav vazio só pra manter o layout consistente -->
+    <div class="nav-links" id="navLinks"></div>
+
+    <button class="btn" id="cvBtn" type="button" onclick="downloadCV()">Baixar CV</button>
+    <button class="btn" id="themeToggle" type="button" aria-pressed="false" title="Alternar tema">Tema</button>
+
+    <button id="menuToggle"
+            class="btn ghost"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navLinks">
+      ☰
+    </button>
+  </nav>
+</header>
+
+<main class="cv-main container">
+
+  <!-- DADOS PESSOAIS -->
+  <section class="cv-bloco-contact" aria-labelledby="cv-dados">
+    <h2 id="cv-dados">Dados pessoais</h2>
+    <p><strong>Nome:</strong> Ítalo Patrick</p>
+    <p><strong>Cidade:</strong> Santa Luzia – MA, Brasil</p>
+    <p><strong>Contato:</strong> italopatrick247@gmail.com | (98) 9 83133886</p>
+    <p><strong>Links:</strong>
+      <a href="https://www.linkedin.com/in/italo-patrick-vieira-lima/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="https://github.com/Italo-Patrick" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </section>
+
+  <!-- RESUMO PROFISSIONAL -->
+  <section class="cv-bloco swing" aria-labelledby="cv-resumo">
+  <div class="swing-inner">
+    <div class="swing-text">
+      <h2 id="cv-resumo">Resumo profissional</h2>
+      <p>Desenvolvedor front-end em formação, com foco em acessibilidade digital e interfaces inclusivas...
+      </p>
+    </div>
+
+    <div class="swing-media"></div>
+  </div>
+</section>
+
+
+  <!-- HABILIDADES -->
+  <section class="cv-bloco swing" aria-labelledby="cv-habilidades">
+  <div class="swing-inner">
+    <div class="swing-text">
+      <h2 id="cv-habilidades">Habilidades</h2>
+
+      <div class="cv-grid">
+        <div>
+          <h3>Hard skills</h3>
+          <ul>
+            <li>HTML5 semântico e acessível (A11Y)</li>
+            <li>CSS3, responsividade e design focado em leitura</li>
+            <li>Noções iniciais de JavaScript</li>
+            <li>Git e GitHub</li>
+            <li>Montagem e manutenção de computadores</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Soft skills</h3>
+          <ul>
+            <li>Comunicação clara</li>
+            <li>Aprendizagem contínua</li>
+            <li>Resiliência</li>
+            <li>Foco em acessibilidade</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="swing-media"></div>
+  </div>
+</section>
+
+  <!-- EXPERIÊNCIA -->
+  <section class="cv-bloco swing" aria-labelledby="cv-experiencia">
+  <div class="swing-inner">
+
+    <div class="swing-text">
+      <h2 id="cv-experiencia">Experiência</h2>
+
+      <article class="cv-item">
+        <header>
+          <h3>Suporte Técnico Autônomo — PC Diagnóstico</h3>
+          <p class="cv-item__sub">2023 – atual · Santa Luzia – MA</p>
+        </header>
+        <ul>
+          <li>Formatação de computadores, remoção de vírus...</li>
+        </ul>
+      </article>
+
+      <article class="cv-item">
+        <header>
+          <h3>Projetos pessoais em desenvolvimento web</h3>
+          <p class="cv-item__sub">2025 – atual · Estudos e portfólio</p>
+        </header>
+        <ul>
+          <li>Portfólio acessível</li>
+          <li>Estudo avançado de HTML/CSS</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="swing-media"></div>
+  </div>
+</section>
+
+  <!-- FORMAÇÃO -->
+  <section class="cv-bloco swing" aria-labelledby="cv-formacao">
+  <div class="swing-inner">
+
+    <div class="swing-text">
+      <h2 id="cv-formacao">Formação</h2>
+
+      <article class="cv-item">
+        <header>
+          <h3>Técnico em Eletromecânica — IFMA</h3>
+        </header>
+        <p>Formação técnica com base em eletricidade...</p>
+      </article>
+
+      <article class="cv-item">
+        <header>
+          <h3>Estudos em Tecnologia</h3>
+        </header>
+        <ul>
+          <li>Programação em C</li>
+          <li>Front-end acessível</li>
+        </ul>
+      </article>
+    </div>
+    <div class="swing-media"></div>
+
+  </div>
+</section>
+
+  <!-- PROJETOS -->
+  <section class="cv-bloco swing" aria-labelledby="cv-projetos">
+  <div class="swing-inner">
+    <div class="swing-text">
+      <h2 id="cv-projetos">Projetos em destaque</h2>
+      <ul>
+        <li><strong>Portfólio acessível:</strong> site pessoal...</li>
+        <li><strong>Mini dashboard web:</strong> interface para dados...</li>
+        <li><strong>Projeto em C:</strong> sistema de cadastro em console...</li>
+      </ul>
+    </div>
+    <div class="swing-media"></div>
+  </div>
+</section>
+
+
+  <!-- CONTATO FINAL -->
+  <section class="cv-bloco" aria-labelledby="cv-contato">
+    <h2 id="cv-contato">Contato</h2>
+    <p>
+      Aberto a oportunidades como estagiário, trainee ou júnior em desenvolvimento front-end e áreas relacionadas à acessibilidade digital.
+    </p>
+    <p>
+      <strong>E-mail:</strong> italopatrick247@gmail.com<br>
+      <strong>WhatsApp:</strong> (98) 9 83133886
+    </p>
+  </section>
+
+</main>
+
+<footer class="cv-footer">
+  <div class="container">
+    <p>© Ítalo Patrick — Currículo online</p>
+  </div>
+</footer>
+
+<script src="./js/script.js" defer></script>
+</body>
+</html>
